@@ -8,24 +8,12 @@ import (
 func init() {}
 
 type IRuntime interface {
-	Start(name string, args ...string) int
+	Start(arg string) int
 	Stop()
-	ResStart(name string, args ...string) int
+	ResStart(arg string) int
 	Idle() int
 	Health() int
 }
-
-type RuntimeEvent string
-
-const (
-	Log RuntimeEvent = "log"
-
-	Fatal RuntimeEvent = "fatal"
-
-	Exit RuntimeEvent = "exit"
-
-	Error RuntimeEvent = "error"
-)
 
 type Runtime struct {
 	event.Event
