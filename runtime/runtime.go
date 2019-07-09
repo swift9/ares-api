@@ -10,10 +10,12 @@ func init() {}
 type IRuntime interface {
 	Start(cmd string, args ...string) int
 	Stop()
-	ResStart(cmd string, args ...string) int
+	ReStart(cmd string, args ...string) int
 	Idle() int
 	Health() int
 	GetCreateTime() time.Time
+	SetCreateTime(time time.Time)
+	Init()
 	event.IEventEmitter
 }
 
@@ -24,4 +26,8 @@ type Runtime struct {
 
 func (runtime *Runtime) getCreateTime() time.Time {
 	return runtime.CreateTime
+}
+
+func (runtime *Runtime) setCreateTime(t time.Time) {
+	runtime.CreateTime = t
 }
