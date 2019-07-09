@@ -14,7 +14,6 @@ type IRuntime interface {
 	Idle() int
 	Health() int
 	GetCreateTime() time.Time
-	SetCreateTime(time time.Time)
 	Init()
 	event.IEventEmitter
 }
@@ -24,10 +23,10 @@ type Runtime struct {
 	CreateTime time.Time
 }
 
-func (runtime *Runtime) getCreateTime() time.Time {
+func (runtime *Runtime) GetCreateTime() time.Time {
 	return runtime.CreateTime
 }
 
-func (runtime *Runtime) setCreateTime(t time.Time) {
-	runtime.CreateTime = t
+func (runtime *Runtime) Init() {
+	runtime.CreateTime = time.Now()
 }
