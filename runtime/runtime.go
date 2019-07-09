@@ -8,9 +8,9 @@ import (
 func init() {}
 
 type IRuntime interface {
-	Start(arg string) int
+	Start(cmd string, args ...string) int
 	Stop()
-	ResStart(arg string) int
+	ResStart(cmd string, args ...string) int
 	Idle() int
 	Health() int
 }
