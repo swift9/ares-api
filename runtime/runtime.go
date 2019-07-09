@@ -13,9 +13,15 @@ type IRuntime interface {
 	ResStart(cmd string, args ...string) int
 	Idle() int
 	Health() int
+	GetCreateTime() time.Time
+	event.IEventEmitter
 }
 
 type Runtime struct {
-	event.Event
+	event.EventEmitter
 	CreateTime time.Time
+}
+
+func (runtime *Runtime) getCreateTime() time.Time {
+	return runtime.CreateTime
 }
