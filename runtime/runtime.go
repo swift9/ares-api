@@ -12,8 +12,8 @@ const (
 )
 
 type Status struct {
-	Status  STATUS
-	Details map[string]interface{}
+	Status  STATUS                 `json:"status"`
+	Details map[string]interface{} `json:"details"`
 }
 
 func NewStatusUp() Status {
