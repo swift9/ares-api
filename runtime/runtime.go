@@ -2,24 +2,42 @@ package runtime
 
 import (
 	event "github.com/swift9/ares-event"
-	"time"
 )
+
+type STATUS string
+
+const (
+	StatusUp   STATUS = "UP"
+	StatusDown STATUS = "DOWN"
+)
+
+type Status struct {
+	Status  STATUS
+	Details map[string]interface{}
+}
+
+func NewStatusUp() Status {
+	return Status{
+		Status: StatusUp,
+	}
+}
+
+func NewStatusDown() Status {
+	return Status{
+		Status: StatusDown,
+	}
+}
 
 type IRuntime interface {
 	Init()
 	Start(cmd string, args ...string) int
 	Stop()
 	Idle() int
-	Health() int
-	GetCreateTime() time.Time
+	Health() Status
 	event.IEventEmitter
 }
 
 type Runtime struct {
 	event.EventEmitter
-	CreateTime time.Time
-}
-
-func (r *Runtime) GetCreateTime() time.Time {
-	return r.CreateTime
+	Meta map[string]interface{}
 }
