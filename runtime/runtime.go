@@ -38,6 +38,6 @@ type IRuntime interface {
 }
 
 type Runtime struct {
-	event.IEmitter
+	event.Emitter
 	Meta map[string]interface{}
 }
