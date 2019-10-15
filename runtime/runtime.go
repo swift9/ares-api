@@ -34,10 +34,10 @@ type IRuntime interface {
 	Stop()
 	Idle() int
 	Health() Status
-	event.IEventEmitter
+	event.IEmitter
 }
 
 type Runtime struct {
-	event.EventEmitter
+	event.IEmitter
 	Meta map[string]interface{}
 }
