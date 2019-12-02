@@ -33,7 +33,7 @@ type Env struct {
 	Value string
 }
 
-type RuntimeDef struct {
+type ProcessCommand struct {
 	Envs     []Env
 	Cmd      string
 	Args     string
@@ -43,7 +43,7 @@ type RuntimeDef struct {
 
 type IRuntime interface {
 	Init()
-	Start(def RuntimeDef) int
+	Start(cmd ProcessCommand) int
 	Stop()
 	Idle() int
 	Health() Status
