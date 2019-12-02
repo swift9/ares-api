@@ -36,7 +36,7 @@ type Env struct {
 type ProcessCommand struct {
 	Envs     []Env
 	Cmd      string
-	Args     string
+	Args     []string
 	Dir      string
 	Addition map[string]string
 }
