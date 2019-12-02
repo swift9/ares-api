@@ -28,9 +28,22 @@ func NewStatusDown() Status {
 	}
 }
 
+type Env struct {
+	Name  string
+	Value string
+}
+
+type RuntimeDef struct {
+	Envs     []Env
+	Cmd      string
+	Args     string
+	Dir      string
+	Addition map[string]string
+}
+
 type IRuntime interface {
 	Init()
-	Start(cmd string, args ...string) int
+	Start(def RuntimeDef) int
 	Stop()
 	Idle() int
 	Health() Status
